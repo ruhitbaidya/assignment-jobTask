@@ -7,7 +7,14 @@ const Home = () => {
   const [pages, setPages] = useState(0)
   useEffect(() => {
     fetch(`https://assignment-task-project.vercel.app/product/${pages}`)
-      .then((res) => res.json())
+    .then(res => {
+        if (!res.ok) {
+          return res.text().then(text => {
+            throw new Error(`Server error: ${text}`);
+          });
+        }
+        return res.json();
+      })
       .then((data) => {
         setProduct(data.product);
         setProductCount(data.productCount);
