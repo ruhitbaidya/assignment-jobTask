@@ -7,7 +7,7 @@ const Home = () => {
   const [buttonCreate, setButtonCreate] = useState(1);
   const [pages, setPages] = useState(0);
   useEffect(() => {
-    fetch(`https://assignment-job-task-server-eyzicpf33-ruhit-baidyas-projects.vercel.app/product/${pages}`)
+    fetch(`http://localhost:3000/product/${pages}`)
       .then((res) => res.json())
       .then((data) => {
         setProduct(data.product);
@@ -15,7 +15,6 @@ const Home = () => {
         setButtonCreate(Math.floor(data.productCount / 10) - 1);
         console.log(buttonCreate);
       })
-      .catch((error) => console.error("Error:", error));
   }, [buttonCreate, pages]);
 
   console.log(pages);
