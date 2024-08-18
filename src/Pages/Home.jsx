@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../Components/Navbar";
+
 
 const Home = () => {
   const [product, setProduct] = useState(null);
@@ -22,7 +22,6 @@ const Home = () => {
   return (
     <>
       <div>
-        <Navbar />
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[25px]">
             {product?.map((item) => (
