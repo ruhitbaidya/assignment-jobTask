@@ -6,7 +6,7 @@ const Home = () => {
   const [buttonCreate, setButtonCreate] = useState(1);
   const [pages, setPages] = useState(0);
   useEffect(() => {
-    fetch(`https://assignment-task-project.vercel.app/product/${pages}`)
+    fetch(`https://assignment-task-server.vercel.app/product/${pages}`)
       .then((res) => res.json())
       .then((data) => {
         setProduct(data.product);
