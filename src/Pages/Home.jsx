@@ -6,7 +6,7 @@ const Home = () => {
   const [buttonCreate, setButtonCreate] = useState(1);
   const [pages, setPages] = useState(0)
   useEffect(() => {
-    fetch(`http://localhost:5000/product/${pages}`)
+    fetch(`https://assignment-job-task-server.vercel.app/${pages}`)
       .then((res) => res.json())
       .then((data) => {
         setProduct(data.product);
@@ -44,7 +44,7 @@ const Home = () => {
                 <div className="space-x-4">
                 <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded" onClick={()=> setPages(pages - 1)} disabled={pages < 1 ? true : false}>Prev</button>
                     {
-                        Array.from({length : buttonCreate}, (_, index)=>(<button className="bg-blue-500 text-white font-bold py-2 px-4 rounded"
+                        Array.from({length : buttonCreate}, (_, index)=>(<button key={index + 1} className="bg-blue-500 text-white font-bold py-2 px-4 rounded"
                         onClick={()=> setPages(index + 1)}>
                             {
                             index + 1
