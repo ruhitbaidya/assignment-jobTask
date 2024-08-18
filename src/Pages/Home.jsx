@@ -4,28 +4,20 @@ const Home = () => {
   const [product, setProduct] = useState(null);
   const [productCount, setProductCount] = useState(0);
   const [buttonCreate, setButtonCreate] = useState(1);
-  const [pages, setPages] = useState(0)
+  const [pages, setPages] = useState(0);
   useEffect(() => {
     fetch(`https://assignment-task-project.vercel.app/product/${pages}`)
-    .then(res => {
-        if (!res.ok) {
-          return res.text().then(text => {
-            throw new Error(`Server error: ${text}`);
-          });
-        }
-        return res.json();
-      })
+      .then((res) => res.json())
       .then((data) => {
         setProduct(data.product);
         setProductCount(data.productCount);
-        setButtonCreate(Math.floor(data.productCount / 10) - 1)
+        setButtonCreate(Math.floor(data.productCount / 10) - 1);
         console.log(buttonCreate);
       })
-      .catch(error => console.error('Error:', error));
-
+      .catch((error) => console.error("Error:", error));
   }, [buttonCreate, pages]);
 
-  console.log(pages)
+  console.log(pages);
   return (
     <>
       <div>
@@ -51,16 +43,29 @@ const Home = () => {
             {productCount >= 0 && (
               <>
                 <div className="space-x-4">
-                <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded" onClick={()=> setPages(pages - 1)} disabled={pages < 1 ? true : false}>Prev</button>
-                    {
-                        Array.from({length : buttonCreate}, (_, index)=>(<button key={index + 1} className="bg-blue-500 text-white font-bold py-2 px-4 rounded"
-                        onClick={()=> setPages(index + 1)}>
-                            {
-                            index + 1
-                            }
-                        </button>))
-                    }
-                <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded" onClick={()=> setPages(pages + 1)}  disabled={buttonCreate === pages ? true : false}>Next</button>
+                  <button
+                    className="bg-blue-500 text-white font-bold py-2 px-4 rounded"
+                    onClick={() => setPages(pages - 1)}
+                    disabled={pages < 1 ? true : false}
+                  >
+                    Prev
+                  </button>
+                  {Array.from({ length: buttonCreate }, (_, index) => (
+                    <button
+                      key={index + 1}
+                      className="bg-blue-500 text-white font-bold py-2 px-4 rounded"
+                      onClick={() => setPages(index + 1)}
+                    >
+                      {index + 1}
+                    </button>
+                  ))}
+                  <button
+                    className="bg-blue-500 text-white font-bold py-2 px-4 rounded"
+                    onClick={() => setPages(pages + 1)}
+                    disabled={buttonCreate === pages ? true : false}
+                  >
+                    Next
+                  </button>
                 </div>
               </>
             )}
