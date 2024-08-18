@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Navbar from "../Components/Navbar";
 
 const Home = () => {
   const [product, setProduct] = useState(null);
@@ -6,7 +7,7 @@ const Home = () => {
   const [buttonCreate, setButtonCreate] = useState(1);
   const [pages, setPages] = useState(0);
   useEffect(() => {
-    fetch(`https://assignment-task-server.vercel.app/product/${pages}`)
+    fetch(`https://assignment-job-task-server-eyzicpf33-ruhit-baidyas-projects.vercel.app/product/${pages}`)
       .then((res) => res.json())
       .then((data) => {
         setProduct(data.product);
@@ -21,6 +22,7 @@ const Home = () => {
   return (
     <>
       <div>
+        <Navbar />
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[25px]">
             {product?.map((item) => (
