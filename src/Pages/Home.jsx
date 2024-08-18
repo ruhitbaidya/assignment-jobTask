@@ -20,7 +20,9 @@ const Home = () => {
         setProductCount(data.productCount);
         setButtonCreate(Math.floor(data.productCount / 10) - 1)
         console.log(buttonCreate);
-      });
+      })
+      .catch(error => console.error('Error:', error));
+
   }, [buttonCreate, pages]);
 
   console.log(pages)
