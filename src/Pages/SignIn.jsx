@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { UserLogin } from '../UserAuth/User_Auth'
 
 const SignIn = () => {
+    const {data} = useContext(UserLogin)
+    console.log(data)
   return (
     <div>
         <div className='container mx-auto'>
@@ -16,6 +19,7 @@ const SignIn = () => {
                     </div>
                     <div>
                         <button className=''>SignIn</button>
+                            {data}
                     </div>
                 </form>
             </div>

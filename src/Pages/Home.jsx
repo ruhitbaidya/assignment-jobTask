@@ -7,7 +7,7 @@ const Home = () => {
   const [buttonCreate, setButtonCreate] = useState(1);
   const [pages, setPages] = useState(0);
   useEffect(() => {
-    fetch(`https://assignment-job-task-server.onrender.com/product/${pages}`)
+    fetch(`http://localhost:5000/product/${pages}`)
       .then((res) => res.json())
       .then((data) => {
         setProduct(data.product);
@@ -21,7 +21,8 @@ const Home = () => {
   return (
     <>
       <div>
-        <div className="container mx-auto">
+        <div className="container mx-auto px-[10px]">
+          <h4 className="my-[30px] text-center font-[700] text-2xl">Product List</h4>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[25px]">
             {product?.map((item) => (
               <div key={item._id} className="card border p-[10px] rounded-lg">
