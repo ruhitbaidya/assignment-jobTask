@@ -7,7 +7,7 @@ const Home = () => {
   const [buttonCreate, setButtonCreate] = useState(1);
   const [pages, setPages] = useState(0);
   useEffect(() => {
-    fetch(`http://localhost:3000/product/${pages}`)
+    fetch(`https://assignment-job-task-server.onrender.com/product/${pages}`)
       .then((res) => res.json())
       .then((data) => {
         setProduct(data.product);
