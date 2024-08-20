@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import ProductFilters from "./ProductFilters";
 
 
 const Home = () => {
@@ -13,7 +14,7 @@ const Home = () => {
         setProduct(data.product);
         setProductCount(data.productCount);
         setButtonCreate(Math.floor(data.productCount / 10) - 1);
-        console.log(buttonCreate);
+        console.log(data);
       })
   }, [buttonCreate, pages]);
 
@@ -23,6 +24,7 @@ const Home = () => {
       <div>
         <div className="container mx-auto px-[10px]">
           <h4 className="my-[30px] text-center font-[700] text-2xl">Product List</h4>
+          <ProductFilters />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[25px]">
             {product?.map((item) => (
               <div key={item._id} className="card border p-[10px] rounded-lg">
