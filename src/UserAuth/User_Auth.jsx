@@ -15,6 +15,10 @@ const UserAuth = ({children}) => {
     return signInWithEmailAndPassword(auth, email, password)
   }
 
+  const googlePopupLogin = ()=>{
+    const provider = new GoogleAuthProvider();
+    return signInWithPopup(auth, provider)
+  }
   useEffect(()=>{
       const unsubscribe = onAuthStateChanged(auth, (person) => {
           setData(person)
@@ -25,7 +29,7 @@ const UserAuth = ({children}) => {
       }
   })
 
-  const info = {data, loading, setData, emailPasssignUp, dataFind, setDataFind, signIngoogle}
+  const info = {data, loading, setData, emailPasssignUp, dataFind, setDataFind, signIngoogle, googlePopupLogin}
   return (
     <UserLogin.Provider value={info}>
       {children}
