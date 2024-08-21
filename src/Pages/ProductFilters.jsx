@@ -6,7 +6,7 @@ const ProductFilters = () => {
   const [searchText, setSearchText] = useState(null);
   const [searchTextwo, setSearchTextwo] = useState(null);
   const dataFetch = (textLink, datas) => {
-    fetch(`http://localhost:5000/${textLink}/${datas}`)
+    fetch(`https://assignment-job-task-server.onrender.com/${textLink}/${datas}`)
       .then((res) => res.json())
       .then((data) => {
         setDataFind(data);
