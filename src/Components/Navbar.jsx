@@ -27,7 +27,8 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
-              
+               <Link to="/login"><button className="px-[35px] w-full py-[8px] border mr-[10px]">SignIn</button></Link>
+               <Link to="/register"><button className="px-[35px] w-full py-[8px] border">SignUp</button></Link>
             </ul>
           </div>
           <a className="btn btn-ghost text-xl">ShopSphere</a>
@@ -38,8 +39,8 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <Link to="/login"><button className="px-[35px] py-[8px] border mr-[10px]">SignIn</button></Link>
-          <Link to="/register"><button className="px-[35px] py-[8px] border">SignUp</button></Link>
+          <Link to="/login"><button className="px-[35px] hidden lg:flex py-[8px] border mr-[10px]">SignIn</button></Link>
+          <Link to="/register"><button className="px-[35px] hidden lg:flex py-[8px] border">SignUp</button></Link>
           
         </div>
       </div>

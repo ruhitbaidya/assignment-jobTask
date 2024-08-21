@@ -1,22 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ProductFilters from "./ProductFilters";
+import { UserLogin } from "../UserAuth/User_Auth";
 
 
 const Home = () => {
-  const [product, setProduct] = useState(null);
+  const { dataFind, setDataFind} = useContext(UserLogin)
+  console.log()
   const [productCount, setProductCount] = useState(0);
   const [buttonCreate, setButtonCreate] = useState(1);
   const [pages, setPages] = useState(0);
   useEffect(() => {
-    fetch(`http://localhost:5000/product/${pages}`)
+      fetch(`http://localhost:5000/product/${pages}`)
       .then((res) => res.json())
       .then((data) => {
-        setProduct(data.product);
+        setDataFind(data.product);
         setProductCount(data.productCount);
         setButtonCreate(Math.floor(data.productCount / 10) - 1);
         console.log(data);
       })
   }, [buttonCreate, pages]);
+
 
   console.log(pages);
   return (
@@ -26,7 +29,7 @@ const Home = () => {
           <h4 className="my-[30px] text-center font-[700] text-2xl">Product List</h4>
           <ProductFilters />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[25px]">
-            {product?.map((item) => (
+            {dataFind?.map((item) => (
               <div key={item._id} className="card border p-[10px] rounded-lg">
                 <div>
                   <img
